@@ -1,13 +1,29 @@
-from flask import render_template,url_for,flash,redirect
+from flask import render_template,url_for,flash,redirect, request
 from main import app, db, bcrypt
 from main.forms import RegistrationForm, LoginForm
 from main.models import User
 from flask_login import login_user
 
+output = []
+
+class s():
+    global output
+    
+
 @app.route("/")
 @app.route("/home")
 def home():
     return render_template("home.html")
+
+@app.route("/workout")
+def workout():
+    return render_template("workout.html")
+
+@app.route("/process")
+def process():
+    global output
+    output = request.get_json()
+    return []
 
 @app.route("/login", methods=["GET","POST"])
 def login():
@@ -45,3 +61,5 @@ def learn():
 @app.route("/mainPage")
 def mainPage():
     return render_template("mainPage.html")
+
+print(output)

@@ -3,11 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/mainPage.css') }}">
     <title>Main</title>
 </head>
 <body>
     {% for mesg in get_flashed_messages() %}
       <h1>{{ mesg }}</h1>
       {% endfor %}
+    
+      <div>
+        <h1>Sigma Fitness</h1>
+    </div>
+    <div class = "buttonHolder">
+        <table>
+            <div>
+                <tr>
+                    <td><button class = "buttons button" id="existing"><span>My Workouts</span></button></td>
+                    <td>
+                        <a href="{{url_for('workout')}}">
+                            <button class = "buttons button" id="new">New Workout</button>
+                        </a>
+                    </td>
+                </tr>
+            </div>
+
+            <div>
+                <tr>
+                    <td><button class = "buttons button" id="Nutrition"><span>Nutrition</span></button></td>
+                    <td><button class = "buttons button" id="Chatbot"><span>AlphaBot</span></button></td>
+                </tr>
+            </div>
+        </table>
+    </div>
 </body>
 </html>
+
+
