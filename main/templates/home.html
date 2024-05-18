@@ -1,16 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="OWO2.css">
+    <style>
+        body {
+    background-color: #FFFFFF;
+    background-image: linear-gradient(90deg, #FFFFFF -40%, #74d460 50%, #564eaa 100%);
+}
+
+h1{
+    text-align: center;
+    color: white;
+    font-family : Copperplate, Papyrus, fantasy
+}
+
+
+.button{
+    text-align: center;
+    background-image: linear-gradient(to right, rgb(49, 57, 85), rgba(3, 30, 78, 0.658));
+    color: black;
+    text-align: center;
+    padding: 30px;
+    text-decoration: none;
+    font-size: 32px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    transition: all 1s;
+}
+
+.buttonHolder{
+    text-align: center;
+}
+
+.button span {
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 1s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+    </style>
 </head>
 <body>
-  <h1 id="Title">Ready to Get Shredded?</h1>
-  <h2 id="Logo">Time for Sigma Fitness</h2>
-  
-
-  
- <a href="{{url_for('login')}}"><button id="Login" width=200 height="300">Login</button></a>
- <a href="{{url_for('register')}}"><button id="Register">Register</button></a>
-<a href="{{url_for('learn')}}"><button id="Learn">Learn about fitness</button></a>
+    <h1 id="Title">Ready to Get Shredded?</h1>
+    
+    <div class="buttonHolder">
+        <a href="{{url_for('login')}}"><button class = "button" id="Login" width=200 height="300"><span>Login</span></button></a>
+        <a href="{{url_for('register')}}"><button class = "button" id="Register"><span>Register</span></button></a>
+        <a href="{{url_for('learn')}}"><button class = "button" id="Learn"><span>Learn about fitness</span></button></a>
+    </div>
 </body>
 </html>
+
+
+
+
+
 

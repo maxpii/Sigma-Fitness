@@ -1,0 +1,27 @@
+.workoutListing {
+    margin: auto;
+}
+
+.name {
+    font-family: monospace;
+    font-size: xx-large;
+    float: inline-start;
+}
+
+.type {
+    display: block;
+    font-family: monospace;
+}
+
+.equipment {
+    display: inline-block;
+}
+
+.difficulty {
+    float: inline-end;
+    font-size: xx-large;
+}
+
+.instructions {
+    margin: auto;
+}

@@ -8,7 +8,7 @@ output = []
 
 class s():
     global output
-    
+
 
 @app.route("/")
 @app.route("/home")
@@ -19,11 +19,16 @@ def home():
 def workout():
     return render_template("workout.html")
 
-@app.route("/process")
+@app.route("/process",  methods=["GET","POST"])
 def process():
     global output
     output = request.get_json()
+    print(output)
     return []
+@app.route("/saved", methods=["GET","POST"])
+def saved():
+    return render_template("saved.html",data=output)
+
 
 @app.route("/login", methods=["GET","POST"])
 def login():

@@ -18,7 +18,12 @@
         <table>
             <div>
                 <tr>
-                    <td><button class = "buttons button" id="existing"><span>My Workouts</span></button></td>
+
+                    <td>
+                        <a href="{{url_for('saved')}}">
+                        <button class = "buttons button" id="existing"><span>My Workouts</span></button>
+                        </a>
+                    </td>
                     <td>
                         <a href="{{url_for('workout')}}">
                             <button class = "buttons button" id="new">New Workout</button>
@@ -29,7 +34,9 @@
 
             <div>
                 <tr>
-                    <td><button class = "buttons button" id="Nutrition"><span>Nutrition</span></button></td>
+                    <td>
+                        <button class = "buttons button" id="Nutrition"><span>Nutrition</span></button>
+                    </td>
                     <td><button class = "buttons button" id="Chatbot"><span>AlphaBot</span></button></td>
                 </tr>
             </div>
