@@ -14,6 +14,20 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     #TODO:create columns for typing-specific data
 
+class Workout(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    type = db.Column(db.String(100), nullable=False)
+    muscle = db.Column(db.String(100), nullable=False)
+    equipment = db.Column(db.String(100), nullable=False)
+    difficulty = db.Column(db.String(100), nullable=False)
+    instructions = db.Column(db.String(100), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    
+
+    def __repr__(self):
+        return f"Post('{self.title}', '{self.date_posted}')"
+
     def __repr__(self):
         return f"User('{self.username}','{self.email}','{self.image_file}')"
     
