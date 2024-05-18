@@ -127,6 +127,9 @@ function muscleGrabber(muscle) {
         success: function(result) {
             /*required segment start*/
             //result is an array of workout objects
+            let header = document.createElement("h1");
+            header.innerHTML = muscle;
+            document.body.appendChild(header);
             result.forEach((element) => {
                 console.log(element);
                 workoutList.push(new Workout(element));
@@ -143,7 +146,7 @@ function muscleGrabber(muscle) {
     });
 }
 muscles.forEach((element) => {
-
+    muscle = element;
     muscleGrabber(element);
 })
 

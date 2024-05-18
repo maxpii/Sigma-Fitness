@@ -17,16 +17,15 @@
     text-align: center;
     }
 </style>
-<body>
-    <h1></h1>
-    <div id="something">
-
     
+{% for i in data.List%}
+    <div id="something">{{ i.name }}</div>
     <br>
-    {% for i in data.List%}
-        <div>{{ i.name }}</div>
-        <br>
-    {% endfor %}
-</div>
+{% endfor %}
+
+
+<script src="savedJs.js"></script>
+
 </body>
+
 </html>
