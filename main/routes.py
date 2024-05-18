@@ -1,23 +1,7 @@
-from flask import Flask, render_template,request, flash, redirect, url_for
-from forms import RegistrationForm, LoginForm
-from flask_sqlalchemy import SQLAlchemy
-
-app = Flask(__name__)
-app.config["SECRET_KEY"] = "7c9a3daa9593e08a5cd46a6c85e2bdf2"
-app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///site.db'
-
-db = SQLAlchemy(app)
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=True, nullable=False) #string of 20 characters, and cannot be duplicated
-    email = db.Column(db.String(120), unique=True, nullable=False) #string of 20 characters, and cannot be duplicated
-    image_file = db.Column(db.String(20),nullable=False, default='default.jpg') #string of 20 characters, and cannot be duplicated
-    password = db.Column(db.String(60), nullable=False)
-    #TODO:create columns for typing-specific data
-
-    def __repr__(self):
-        return f"User('{self.username}','{self.email}','{self.image_file}')"
-    
+from flask import render_template,url_for,flash,redirect
+from main import app, db, bcrypt
+from main.forms import RegistrationForm, LoginForm
+from main.models import User
 
 @app.route("/")
 @app.route("/home")
@@ -40,6 +24,10 @@ def login():
 def register():
     form = RegistrationForm()
     if form.is_submitted() and form.validate():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data,email=form.email.data,password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
         flash(f"Account created for {form.username.data}!")
         return redirect(url_for("mainPage"))
     elif form.is_submitted() and not form.validate():
@@ -53,5 +41,3 @@ def learn():
 @app.route("/mainPage")
 def mainPage():
     return render_template("mainPage.html")
-
-app.run(port=8000, debug=True)
