@@ -118,28 +118,34 @@ class Workout{
 }
 
 //alexvega20137@gmail.com
-$.ajax({
-    method: 'GET',
-    url: 'https://api.api-ninjas.com/v1/exercises?muscle=' + muscle,
-    headers: { 'X-Api-Key': 'geZ3QPLwH+4shB5AbNk7CA==dJWU6rizbfyG8PAl'},
-    contentType: 'application/json',
-    success: function(result) {
-        /*required segment start*/
-        //result is an array of workout objects
-        result.forEach((element) => {
-            console.log(element);
-            workoutList.push(new Workout(element));
-        });
-        workoutList.forEach((element) => {
-            document.body.appendChild(element.renderHtmlElement());
-        });
-        sendData();
-        /*required segment end*/
-    },
-    error: function ajaxError(jqXHR) {
-        console.error('Error: ', jqXHR.responseText);
-    }
-});
+function muscleGrabber(muscle) {
+    $.ajax({
+        method: 'GET',
+        url: 'https://api.api-ninjas.com/v1/exercises?muscle=' + muscle,
+        headers: { 'X-Api-Key': 'geZ3QPLwH+4shB5AbNk7CA==dJWU6rizbfyG8PAl'},
+        contentType: 'application/json',
+        success: function(result) {
+            /*required segment start*/
+            //result is an array of workout objects
+            result.forEach((element) => {
+                console.log(element);
+                workoutList.push(new Workout(element));
+            });
+            workoutList.forEach((element) => {
+                document.body.appendChild(element.renderHtmlElement());
+            });
+            sendData();
+            /*required segment end*/
+        },
+        error: function ajaxError(jqXHR) {
+            console.error('Error: ', jqXHR.responseText);
+        }
+    });
+}
+muscles.forEach((element) => {
+
+    muscleGrabber(element);
+})
 
 
 function sendData(){
