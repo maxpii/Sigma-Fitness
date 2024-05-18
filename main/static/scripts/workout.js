@@ -104,12 +104,14 @@ class Workout{
     save() {
         savedWorkouts.push(this);
         console.log(savedWorkouts);
+        document.getElementById(this.name).classList.add("selected");
         sendData();
     }
 
     unsave() {
         savedWorkouts.splice(savedWorkouts.indexOf(this), 1);
         console.log(savedWorkouts);
+        document.getElementById(this.name).classList.remove("selected");
         sendData();
     }
     

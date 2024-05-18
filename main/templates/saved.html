@@ -5,11 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saved</title>
 </head>
+<style>
+    body {
+    background-color: #FFFFFF;
+    background-image: linear-gradient(90deg, #FFFFFF -40%, #816de4 50%, hsl(204, 63%, 55%) 100%);
+    }
+    #something{
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    }
+</style>
 <body>
     <h1></h1>
+    <div id="something">
+
+    
+    <br>
     {% for i in data.List%}
-        {{ i.name }}
+        <div>{{ i.name }}</div>
         <br>
     {% endfor %}
+</div>
 </body>
 </html>

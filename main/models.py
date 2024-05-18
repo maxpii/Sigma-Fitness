@@ -22,7 +22,7 @@ class Workout(db.Model):
     equipment = db.Column(db.String(100), nullable=False)
     difficulty = db.Column(db.String(100), nullable=False)
     instructions = db.Column(db.String(100), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    #user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     
 
     def __repr__(self):

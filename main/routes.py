@@ -1,7 +1,7 @@
 from flask import render_template,url_for,flash,redirect, request
 from main import app, db, bcrypt
 from main.forms import RegistrationForm, LoginForm
-from main.models import User
+from main.models import User, Workout
 from flask_login import login_user
 
 output = []
@@ -23,12 +23,28 @@ def workout():
 def process():
     global output
     output = request.get_json()
-    print(output)
+    for i in output["List"]:
+        workout = Workout(name=i['name'],type=i['type'],muscle=i['muscle'],
+                          equipment=i['equipment'],difficulty=i['difficulty'],
+                          instructions = i['instructions'])
+        db.session.add(workout)
+    db.session.commit()
+        
     return []
 @app.route("/saved", methods=["GET","POST"])
 def saved():
+    data = []
+    for i in Workout.query.all():
+        data.append(i.name)
     return render_template("saved.html",data=output)
 
+
+# name = db.Column(db.String(100), nullable=False)
+#     type = db.Column(db.String(100), nullable=False)
+#     muscle = db.Column(db.String(100), nullable=False)
+#     equipment = db.Column(db.String(100), nullable=False)
+#     difficulty = db.Column(db.String(100), nullable=False)
+#     instructions = db.Column(db.String(100), nullable=False)
 
 @app.route("/login", methods=["GET","POST"])
 def login():

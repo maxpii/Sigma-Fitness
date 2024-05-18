@@ -1,5 +1,11 @@
 .workoutListing {
-    margin: auto;
+    margin: 50px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.selected {
+    background-color: aquamarine;
 }
 
 .name {
@@ -15,6 +21,8 @@
 
 .equipment {
     display: inline-block;
+    font-family: monospace;
+
 }
 
 .difficulty {
@@ -23,5 +31,6 @@
 }
 
 .instructions {
+    font-family: monospace;
     margin: auto;
 }
