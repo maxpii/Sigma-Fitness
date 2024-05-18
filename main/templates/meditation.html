@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/medStyles.css') }}">
+
+
+    <style>
+        body {
+        background-color: #FFFFFF;
+        background-image: linear-gradient(90deg, #FFFFFF -40%, #74d460 50%, #564eaa 100%);
+    }
+    </style>
+    
+
+</head>
+<body>
+    <h1>Meditation</h1>
+    <h6>To meditate, find a quiet enviornment. Sit down and play some relaxing music for 5 minutes.</h6>
+    <br>
+    <h6>Click anywhere on the screen to listen to meditative music</h6>
+    <img src="{{ url_for('static',filename='styles/Meds.jpeg') }}">
+</body>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let audio = new Audio("{{ url_for('static',filename='scripts/music.mp3') }}");
+    document.addEventListener('click', function() {
+        audio.play();
+    });
+});
+</script>
+</html>
+
+
+
+
+

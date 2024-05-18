@@ -38,6 +38,9 @@ def saved():
         data.append(i.name)
     return render_template("saved.html",data=output)
 
+@app.route("/meditation")
+def meditation():
+    return render_template("meditation.html")
 
 # name = db.Column(db.String(100), nullable=False)
 #     type = db.Column(db.String(100), nullable=False)
