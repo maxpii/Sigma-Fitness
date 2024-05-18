@@ -30,7 +30,7 @@ def login():
     if form.validate_on_submit():
         if form.email.data == "admin@blog.com" and form.password.data == "password":
             flash("You have been logged in")
-            return redirect(url_for("home_page"))
+            return redirect(url_for("mainPage"))
     elif form.is_submitted() and not form.validate():
         flash("Login unsuccessful. Please check username and password")
     return render_template("login.html",form=form)
@@ -39,9 +39,9 @@ def login():
 @app.route("/register", methods=["GET","POST"])
 def register():
     form = RegistrationForm()
-    if form.validate_on_submit():
+    if form.is_submitted() and form.validate():
         flash(f"Account created for {form.username.data}!")
-        return redirect(url_for("home_page"))
+        return redirect(url_for("mainPage"))
     elif form.is_submitted() and not form.validate():
         flash("Invalid data")
     return render_template("register.html",form=form)
@@ -49,5 +49,9 @@ def register():
 @app.route("/learn")
 def learn():
     return render_template("learn.html")
+
+@app.route("/mainPage")
+def mainPage():
+    return render_template("mainPage.html")
 
 app.run(port=8000, debug=True)
